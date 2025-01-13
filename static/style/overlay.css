@@ -1,0 +1,69 @@
+.overlay{
+    position: absolute;
+    z-index: 10;
+    top:0px;
+    left: 0px;
+    background-color: rgba(128, 128, 128, 0.8);
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+}
+
+.pair-container{
+    display: flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2%;
+    width: 80%;
+}
+.offerto-text{
+    font-size: 2rem;
+}
+
+.gifter,.receiver{
+    width: 30%;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.gifter {
+    background-color: red;
+}
+.receiver{
+    background-color: blue;
+}
+
+.name, .fname{
+    width: fit-content;
+    flex-wrap: nowrap;
+}
+.name{
+    font-size: large;
+}
+
+.help-text{
+    max-width: 95%;
+    line-height: 3rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.setting-container{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.setting-box{
+    transform: scale(3);
+    padding: 10px;
+    height :15vh;
+}
+

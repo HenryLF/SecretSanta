@@ -1,0 +1,143 @@
+div {
+  border-radius: 5px;
+}
+
+body {
+  background-image: url("../assets/background.gif");
+  background-size: cover;
+  background-position-x: center;
+}
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+button {
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+button:hover, .new.family-container:hover {
+  animation: blink 1s 0s infinite ;
+}
+
+#dashboard {
+  width: 95vw;
+  height: 80vh;
+  overflow: scroll;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+#submit {
+  height: 10vh;
+  width: 95vw;
+  background-color: rgba(255, 0, 0);
+  font-size: 2rem;
+  position: sticky;
+  top: 90vh;
+}
+
+input {
+  background-color: rgba(156, 156, 156, 0.219);
+  color: rgb(0, 0, 0);
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.family-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: fit-content;
+  min-height: 30%;
+  min-width: 20%;
+  background-color: rgba(128, 128, 128, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  margin : 2%
+}
+
+.family-name {
+  position: relative;
+  top: 0px;
+  border: 2px solid black;
+  margin: 2%;
+}
+.new.family-container {
+  transition: ease-in-out;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.new.family-container:hover {
+  opacity: 0.8;
+}
+.member-container {
+  width: 92%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: transparent;
+}
+.member {
+  width: 75%;
+  margin: 5%;
+}
+.member-button {
+  width: 15%;
+  margin: 1%;
+  padding: 0%;
+  border-radius: 100%;
+  background-color: rgba(127,127,127, 0.85);
+}
+.add {
+  width: 75%;
+  margin: 2%;
+  border-radius: 5px;
+  border-width: 2px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.buttons-container {
+  position: absolute;
+  top: 2vh;
+  right: 2vh;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+}
+.options{
+  width: 10vh;
+  height: 10vh;
+  margin: 1vh;
+  background-size: contain;
+}
+#help{
+  background-image: url("../assets/help.png");
+}
+#help:hover {
+  animation: bounce 2s 0s infinite;
+}
+#settings{
+  background-image: url("../assets/settings.png");
+}
+#settings:hover {
+  animation: rotate 1s 0s infinite;
+}
+#quit{
+  background-image: url("../assets/quit.png");
+}
+#quit:hover {
+  animation: bounce 2s 0s infinite;
+}
+

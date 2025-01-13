@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secret Santas Picker</title>
+    <link rel='stylesheet' href='./style/animation.css'>
+    <link rel="stylesheet" href="style/dashboard.css" />
+    <link rel='stylesheet' href='./style/overlay.css'>
+  </head>
+  <body>
+    <div id="overlay-result" class="overlay"></div>
+    <div id="overlay-settings" class="overlay">
+    <div class="buttons-container">
+      <div id="quit" class="options"></div>
+    </div>
+      <div class="setting-container">
+        <div>
+          <h3>Unstrict Mode:</h3>
+          <h5>(Will not try to enforce all constraint) </h5>
+        </div>
+        <input id="is-unstrict" class="setting-box" type="checkbox" >
+      </div>
+    </div>
+    <div id="overlay-help" class="overlay">
+      <p class="help-text">
+        This program helps doing draft for Secret Santa.<br>
+Each family is mutualy exclusive (members of the same family cannot offer gift to each other).<br>
+<br>
+The "0" Button define other mutualy exclusive group. <br>
+e.g. : Natasha and Sasha hate themselves, if they are both group 1 they won't have to offer gift to each other. <br>
+The group 0 brings no constraint.
+      </p>
+    </div>
+    <div class="buttons-container">
+      <div id="help" class="options"></div>
+      <div id="settings" class="options"></div>
+    </div>
+    <div id="container">
+      <div id="dashboard">
+        <div id="add-family" class="new family-container">Add Family</button>
+        </div>
+      </div>
+      <button id="submit">Submit</button>
+    </div>
+    <template id="offerto-template">
+      <p class="offerto-text">
+        Offer<br>To
+    </p></template>
+
+
+    <script src="./script/init.js"></script>
+    <script src="./script/api.js"></script>
+    <script src="./script/overlay.js"></script>
+  </body>
+</html>
