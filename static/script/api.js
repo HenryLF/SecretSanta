@@ -28,27 +28,8 @@ function collectQuery() {
 
 async function submitHandle() {
   submitButton.disabled = true;
-  query = collectQuery();
-  if (!ws) {
-    connectWS();
-  }
-  ws.send(JSON.stringify(query))
+  let result = await window.draft(collectQuery())
+  printResult(result)
 }
 
-let ws;
-function connectWS() {
-  return new Promise((r) => {
-    ws = new WebSocket("ws://" + location.host + "/ws", "draft");
-    ws.onopen = () => {
-      console.log("Connection openned.");
-      r();
-    };
-    ws.onclose = () => {
-      setTimeout(connectWS, 1000);
-    };
-    ws.onmessage = (m)=>{
-      console.log(JSON.parse(m.data))
-      printResult(JSON.parse(m.data))
-    }
-  });
-}
+

@@ -71,7 +71,6 @@ function deleteFamilyMember(event) {
 }
 
 window.onload = async () => {
-  await connectWS()
   addFamily();
   addFamily();
   

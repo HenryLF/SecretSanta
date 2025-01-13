@@ -3,6 +3,8 @@ package drafter
 import (
 	"errors"
 	"log"
+	"maps"
+	"slices"
 )
 
 type Result struct {
@@ -18,20 +20,6 @@ func NewResult() Result {
 
 }
 
-type outJSON struct {
-	Gifter   []Person
-	Receiver []Person
-}
-
-func (R Result) toJSON() outJSON {
-	var out = outJSON{}
-	for g, r := range R.Draft {
-		out.Gifter = append(out.Gifter, g)
-		out.Receiver = append(out.Receiver, r)
-	}
-	return out
-}
-
 type Person struct {
 	Name, Family string
 	Mutex        int
@@ -43,6 +31,23 @@ var ErrEndRecursion = errors.New("end recursion")
 var ErrUnstricModeOK = errors.New("/ unstrict mode")
 var ErrRecursionFail = errors.New("recursion failed")
 var ErrUnstricModeFail = errors.New("unstrict mode failed")
+
+type Resquest struct {
+	Gifters  []Person
+	Unstrict bool
+}
+
+func Draft(req Resquest) [][]Person {
+	var err error
+	result, err := Process(req)
+	if err != nil {
+		log.Println("Processing error.", err)
+	}
+	return [][]Person{
+		slices.Collect(maps.Keys(result.Draft)),
+		slices.Collect(maps.Values(result.Draft)),
+	}
+}
 
 func Process(req Resquest) (Result, error) {
 	var Gifters []Person
@@ -59,7 +64,6 @@ func Process(req Resquest) (Result, error) {
 	out, err = recursiveFuck(out, Gifters, Receivers, 0)
 
 	if errors.Is(err, ErrRecursionFail) && req.Unstrict {
-		log.Println("Unstrict Mode @ ", out.MaxRecursion)
 		out, err = recursiveFuck(Result{make(map[Person]Person), 0}, Gifters, Receivers, out.MaxRecursion)
 	}
 	if err != nil {
@@ -73,7 +77,6 @@ func Process(req Resquest) (Result, error) {
 func recursiveFuck(out Result, Gifters, Receivers []Person, maxRec int) (Result, error) {
 	var err error
 	var validReceiver []Person
-	log.Println(out)
 	if len(Gifters) == 0 && len(Receivers) == 0 {
 		return out, ErrEndRecursion
 	}

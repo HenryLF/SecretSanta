@@ -5,13 +5,13 @@ const offerToTemplate = document.getElementById("offerto-template")
 
 function printResult(result) {
   submitButton.disabled = false;
-  if (!result.Gifter) {
+  if (!result[0]) {
     alert("Too much constrains.");
     return;
   }
   overlayResult.style.display = "flex";
-  result.Gifter.forEach((g, k) => {
-    let r = result.Receiver[k];
+  result[0].forEach((g, k) => {
+    let r = result[1][k];
     renderPair(g, r);
   });
   overlayResult.onclick = () => {
@@ -66,7 +66,6 @@ helpButton.onclick = printHelp;
 
 const overlayHelp = document.getElementById("overlay-help");
 function printHelp() {
-  console.log("hey");
   overlayHelp.style.display = "flex";
   overlayHelp.onclick = () => {
     overlayHelp.onclick = undefined;
